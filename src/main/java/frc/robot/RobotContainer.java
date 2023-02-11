@@ -42,6 +42,9 @@ private final Arm ourArm = new Arm();
     new JoystickButton(m_armController, 2).onTrue(new CloseHands(ourHands));
     new JoystickButton(m_armController, 3).onTrue(new ArmExtend(ourArm));
     new JoystickButton(m_armController, 4).onTrue(new ArmRetract(ourArm));
+    //TODO: Fix so when button released the motor stops
+    new JoystickButton(m_armController, 5).onTrue(new ArmForward(ourArm));
+    new JoystickButton(m_armController, 6).onTrue(new ArmDown(ourArm));
     // While holding the shoulder button, drive at half speed
   }
 }

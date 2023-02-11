@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.kForward;
 import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.kReverse;
 
@@ -15,7 +17,7 @@ public class Arm extends SubsystemBase{
         2,
         3);
 
-    private final CANSparkMax motorArmAngle = new CANSparkMax(10,MotorType.kBrushless);
+  private final CANSparkMax m_ArmAngle = new CANSparkMax(10,MotorType.kBrushless);
   public void extendArm() {
     m_armSolenoid.set(kForward);
   }
@@ -23,6 +25,18 @@ public class Arm extends SubsystemBase{
   /** Releases the hatch. */
   public void retractArm() {
     m_armSolenoid.set(kReverse);
+  }
+  public void armUpSlow(){
+    m_ArmAngle.set(0.3);
+  }
+  public void armDownSlow(){
+    m_ArmAngle.set(-0.3);
+  }
+  public void armUpFast(){
+    m_ArmAngle.set(0.4);
+  }
+  public void armDownFast(){
+    m_ArmAngle.set(-0.4);
   }
   @Override
   public void initSendable(SendableBuilder builder) {
